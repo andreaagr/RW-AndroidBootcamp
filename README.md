@@ -1,2 +1,4 @@
 # Android Summer Bootcamp
-![Bootcamp-logo](images/RWLogo.PNG)
+<div align = "center">
+  <img src = "images/RWLogo.PNG">
+</div>
