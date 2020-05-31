@@ -20,3 +20,9 @@ raywenderlich.com is a community site focused on creating high quality programmi
 - **Week 11 (Aug 3)**: Dependency Injection, Koin, Dependency Management
 - **Week 12 (Aug 10)**: Capstone project!
 - **Week 13 (Aug 17)**: Graduation week
+
+### About me
+
+- **Name:** Andrea García Ruiz
+- **Discord Name:** Andrea García
+- **Location:** Mexico City, Mexico

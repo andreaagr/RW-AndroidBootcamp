@@ -1,3 +1,9 @@
+/***
+ *
+ * @author Andrea García
+ *
+ * ***/
+
 import java.lang.StringBuilder
 
 class Card(
@@ -15,17 +21,13 @@ class Card(
     }
 
     fun createSymbol(){
-        if(suit == 0){                              //Diamonds
-            //figure = """${'\u25C6'}"""
-            figure = putColor("\u25C6")
-        }else if(suit == 1){                        //Spades
-            figure = """${'\u2660'}"""
-        }else if(suit == 2){                        //Hearts
-            figure = putColor("\u2665")
-        }else{                                      //Clubs
-            figure = """${'\u2663'}"""
+        figure = when(suit){
+            0 -> putColor("\u25C6")
+            1 -> """${'\u2660'}"""
+            2 -> putColor("\u2665")
+            3 -> """${'\u2663'}"""
+            else -> ""
         }
-
     }
 
     fun assignValue(){                              //Aces
@@ -84,6 +86,6 @@ fun createDeckofCards() : ArrayList<Card>{
 fun main(){
     val deckOfCards = createDeckofCards()
     deckOfCards.shuffle()                           //Mix the cards
-    var carta = deckOfCards.random()
+    val carta = deckOfCards.random()
     carta.printCard()
 }
