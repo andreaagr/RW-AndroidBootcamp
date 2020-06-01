@@ -30,7 +30,7 @@ class Game {
         //if(!dealer.findWinner)
             for(player in players){
                 if(player.stillInGame){
-                    println("Next turn: ${player.getName()}")
+                    colorMessage("Turn: ${player.getName()}","purple")
                     while (salir) {
                         println("Do you want another card?(y/n)")
                         input = readLine().toString()
@@ -45,12 +45,13 @@ class Game {
                 }
                 salir = true
             }
+        println("\n")
     }
 
     fun start(){
         deckOfCards.shuffle()                                                                            //Mix the cards
         for (player in players) {
-            println("Player ${player.getName()}")
+            colorMessage("Player ${player.getName()}","purple")
             dealer.giveCards(2, player)
         }
         dealer.cardDealer()
@@ -79,9 +80,9 @@ class Game {
                 if (player.stillInGame)
                     if (differencePlayer != differenceDealer) {
                         if (differencePlayer < differenceDealer) {
-                            println("Player ${player.getName()} wins!")
+                            colorMessage("Player ${player.getName()} wins!","green")
                         } else
-                            println("PLayer ${player.getName()} loses :(")
+                            colorMessage("PLayer ${player.getName()} loses :(", "red")
                     } else {
                         println("Draw!")
                     }
@@ -90,7 +91,7 @@ class Game {
         } else{
             for(player in players){
                 if(player.stillInGame)
-                    println("Player ${player.getName()} wins!")
+                    colorMessage("Player ${player.getName()} wins!","green")
             }
         }
     }

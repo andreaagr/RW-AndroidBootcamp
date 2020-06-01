@@ -1,9 +1,20 @@
+import java.lang.StringBuilder
+
 /***
  *
  * @author Andrea García
  * Week 1
  *
  * ***/
+fun colorMessage(text : String, color : String){
+    when(color){
+        "purple" -> println(StringBuilder("${27.toChar()}[45m"+text+"${27.toChar()}[0m").toString())
+        "cyan" -> println(StringBuilder("${27.toChar()}[46m"+text+"${27.toChar()}[0m").toString())
+        "green" -> println(StringBuilder("${27.toChar()}[44m"+text+"${27.toChar()}[0m").toString())
+        "red" -> println(StringBuilder("${27.toChar()}[41m"+text+"${27.toChar()}[0m").toString())
+        else -> println(text)
+    }
+}
 
 
 fun createDeckOfCards() : ArrayList<Card>{
@@ -18,7 +29,7 @@ fun createDeckOfCards() : ArrayList<Card>{
 }
 
 fun main(){
-    val new_game = Game()
-    new_game.welcome()
-    new_game.start()
+    val newGame = Game()
+    newGame.welcome()
+    newGame.start()
 }

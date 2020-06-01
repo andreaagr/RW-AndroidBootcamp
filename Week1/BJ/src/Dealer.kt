@@ -19,14 +19,16 @@ class Dealer(private var deckOfCards : ArrayList<Card>) {
         }
         player.printPoints()
         evaluateGamePlayer(player)
+        println("\n")
     }
 
     fun cardDealer(){
         val randomCard = deckOfCards.random()
         hand.add(randomCard)
         deckOfCards.remove(randomCard)
-        println("Dealer")
+        colorMessage("Dealer","purple")
         randomCard.printCard()
+        println("\n")
         if(randomCard.getisAnAce())
             points+=11
         else
@@ -38,30 +40,29 @@ class Dealer(private var deckOfCards : ArrayList<Card>) {
         if(player.hasAnAce){
             if(player.getPoints() == 21 || player.getPoints2() == 21){
                 if(turn == 1)
-                    println("Congratulations! ${player.getName()} have a BlackJack")
+                    colorMessage("Congratulations! ${player.getName()} have a BlackJack","green")
                 else
-                    println("Congratulations! ${player.getName()} have 21 points")
-                //findWinner = true
+                    colorMessage("Congratulations! ${player.getName()} have 21 points","green")
             }
             else{
                 player.stillInGame = player.getPoints() < 21 || player.getPoints2() < 21
                 if(!player.stillInGame)
-                    println("${player.getName()} lost the game")
+                    colorMessage("${player.getName()} lost the game", "red")
                 else
-                    println("${player.getName()} still in game")
+                    colorMessage("${player.getName()} still in game","cyan")
             }
         }else if(player.getPoints() > 21){
-            println("${player.getName()} lost the game")
+            colorMessage("${player.getName()} lost the game", "red")
             player.stillInGame = false
 
         }else if(player.getPoints() == 21){
             if(turn == 1)
-                println("Congratulations! ${player.getName()} have a BlackJack")
+                colorMessage("Congratulations! ${player.getName()} have a BlackJack","green")
             else
-                println("Congratulations! ${player.getName()} have 21 points")
+                colorMessage("Congratulations! ${player.getName()} have 21 points","green")
             //findWinner = true
         }else{
-            println("${player.getName()} still in game")
+            colorMessage("${player.getName()} still in game", "cyan")
         }
     }
 
@@ -72,7 +73,7 @@ class Dealer(private var deckOfCards : ArrayList<Card>) {
             }
         }
         if(points > 21) {
-            println("The house lose :(")
+            colorMessage("The house lose :(","red")
             houseLose = true
             //findWinner = true
         }

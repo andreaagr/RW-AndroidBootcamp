@@ -26,9 +26,9 @@ class Player(private val name : String) {
 
     fun printPoints(){
         if(hasAnAce)
-            println("The player has 2 options to choose: $points and $points2 points")
+            colorMessage("The player has 2 options to choose: $points and $points2 points","cyan")
         else
-            println("The player has $points points")
+            colorMessage("The player has $points points","cyan")
     }
 
     fun getPoints() : Int{
