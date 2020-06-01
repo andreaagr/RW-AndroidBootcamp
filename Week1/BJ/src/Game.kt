@@ -3,6 +3,7 @@ class Game {
     private val deckOfCards = createDeckofCards()
     val dealer = Dealer(deckOfCards)
 
+
     fun welcome(){
         println("Welcome to Andrea's Casino :)")
         println("Please input the number of players:")
@@ -17,22 +18,35 @@ class Game {
 
     fun nextTurn(){
         var input = ""
-        for(player in players){
-            if(player.points < 21){
-                println("Do you want another card?(y/n)")
-                input = readLine().toString()
-                if(input == "y")
-                    dealer.giveCards(1,player)
+        var salir = true
+        if(!dealer.findWinner)
+            for(player in players){
+                if(player.stillInGame){
+                    println("Next turn: ${player.getName()}")
+                    while (salir) {
+                        println("Do you want another card?(y/n)")
+                        input = readLine().toString()
+                        if (input == "y")
+                            dealer.giveCards(1, player)
+                        else
+                            salir = false
+
+                        if(!player.stillInGame || dealer.findWinner)
+                            salir = false
+                    }
+                }
+                salir = true
             }
         }
-    }
 
     fun start(){
         deckOfCards.shuffle()                           //Mix the cards
+        dealer.turn = 1
         for (player in players) {
-            player.getName()
+            println("Player ${player.getName()}")
             dealer.giveCards(2, player)
         }
         dealer.cardDealer()
+        nextTurn()
     }
 }

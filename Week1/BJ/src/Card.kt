@@ -3,7 +3,8 @@ import java.lang.StringBuilder
 class Card(private val pip : Int, private val suit: Int) {
     private var symbol = ""
     private var figure = ""
-    private var value : Any? = null
+    private var value : Int? = null
+    private var isAnAce = false
 
     init {
         createSymbol()
@@ -23,7 +24,7 @@ class Card(private val pip : Int, private val suit: Int) {
     fun assignValue(){                              //Aces
         if(pip == 1){
             symbol = "A"
-            value = Pair<Int,Int>(1,11)
+            isAnAce = true
         }else if(pip > 10){                          //Face cards
             if(pip == 11)
                 symbol = "J"
@@ -34,7 +35,7 @@ class Card(private val pip : Int, private val suit: Int) {
             value = 10
         }else{                                      //Numbers
             symbol = pip.toString()
-            value = pip
+            value = pip.toInt()
         }
 
     }
@@ -59,5 +60,13 @@ class Card(private val pip : Int, private val suit: Int) {
 
     fun putColor(char : String) : String{
         return StringBuilder("${27.toChar()}[31m"+char+"${27.toChar()}[0m").toString()
+    }
+
+    fun getValue() : Int{
+        return value!!
+    }
+
+    fun getisAnAce() : Boolean{
+        return isAnAce
     }
 }
