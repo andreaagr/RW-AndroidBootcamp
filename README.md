@@ -23,7 +23,7 @@ raywenderlich.com is a community site focused on creating high quality programmi
 
 ## About me
 ~~~
-**Name:** Andrea García Ruiz
-**Discord Name:** Andrea García
-**Location:** Mexico City,Mexico
+Name: Andrea García Ruiz
+Discord Name: Andrea García
+Location: Mexico City,Mexico
 ~~~
