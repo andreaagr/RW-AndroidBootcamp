@@ -39,7 +39,7 @@ class Player(private val name : String) {
         return points2
     }
 
-    fun setPoints(numero : Int){
+    fun setPoints(){
         points = 0
         points2 = 0
     }

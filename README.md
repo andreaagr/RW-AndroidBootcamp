@@ -5,7 +5,7 @@
 
 raywenderlich.com is a community site focused on creating high quality programming tutorials. From May 25 to August 20, the site runs his first-ever bootcamp, where people new to coding can learn how to be successful mobile developers.
 
-### What’s the Curriculum for the RW Bootcamp?
+## What’s the Curriculum for the RW Bootcamp?
 
 - **Week 1 (May 25)**: Basic Kotlin
 - **Week 2 (Jun 1)** : Advanced Kotlin
@@ -20,3 +20,9 @@ raywenderlich.com is a community site focused on creating high quality programmi
 - **Week 11 (Aug 3)**: Dependency Injection, Koin, Dependency Management
 - **Week 12 (Aug 10)**: Capstone project!
 - **Week 13 (Aug 17)**: Graduation week
+
+## About me
+
+***Name:**Andrea García Ruiz*
+***Discord Name:**Andrea García*
+***Location:**Mexico City,Mexico*

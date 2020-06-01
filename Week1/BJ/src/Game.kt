@@ -1,23 +1,29 @@
+import kotlin.system.exitProcess
+
 class Game {
     private var players = ArrayList<Player>()
-    private val deckOfCards = createDeckofCards()
-    val dealer = Dealer(deckOfCards)
+    private val deckOfCards = createDeckOfCards()
+    private val dealer = Dealer(deckOfCards)
 
-
-    fun welcome(){
-        println("Welcome to Andrea's Casino :)")
+    fun welcome() : Boolean{
+        /*
+          Min players: 1
+          Max players: 6
+        */
         println("Please input the number of players:")
         val numberOfPlayers = readLine()!!.toInt()
         for(i in 1..numberOfPlayers){
             println("Input the name of the player:")
             val name = readLine().toString()
-            var player = Player(name)
+            val player = Player(name)
             players.add(player)
         }
+        return true
+
     }
 
-    fun nextTurn(){
-        var input = ""
+    private fun nextTurn(){
+        var input: String
         var salir = true
         if(!dealer.findWinner)
             for(player in players){
@@ -40,8 +46,7 @@ class Game {
         }
 
     fun start(){
-        deckOfCards.shuffle()                           //Mix the cards
-        dealer.turn = 1
+        deckOfCards.shuffle()                                                                            //Mix the cards
         for (player in players) {
             println("Player ${player.getName()}")
             dealer.giveCards(2, player)

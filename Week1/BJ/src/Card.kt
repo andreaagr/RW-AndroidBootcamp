@@ -11,7 +11,7 @@ class Card(private val pip : Int, private val suit: Int) {
         assignValue()
     }
 
-    fun createSymbol(){
+    private fun createSymbol(){
         figure = when(suit){
             0 -> putColor("\u25C6")
             1 -> """${'\u2660'}"""
@@ -21,21 +21,20 @@ class Card(private val pip : Int, private val suit: Int) {
         }
     }
 
-    fun assignValue(){                              //Aces
-        if(pip == 1){
-            symbol = "A"
-            isAnAce = true
-        }else if(pip > 10){                          //Face cards
-            if(pip == 11)
-                symbol = "J"
-            else if(pip == 12)
-                symbol = "Q"
-            else
-                symbol = "K"
-            value = 10
-        }else{                                      //Numbers
-            symbol = pip.toString()
-            value = pip.toInt()
+    private fun assignValue(){                              //Aces
+        when {
+            pip == 1 -> {
+                symbol = "A"
+                isAnAce = true
+            }
+            pip > 10 -> {                          //Face cards
+                symbol = if(pip == 11) "J" else if(pip == 12) "Q" else "K"
+                value = 10
+            }
+            else -> {                                      //Numbers
+                symbol = pip.toString()
+                value = pip
+            }
         }
 
     }
@@ -58,7 +57,7 @@ class Card(private val pip : Int, private val suit: Int) {
         )
     }
 
-    fun putColor(char : String) : String{
+    private fun putColor(char : String) : String{
         return StringBuilder("${27.toChar()}[31m"+char+"${27.toChar()}[0m").toString()
     }
 

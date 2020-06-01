@@ -1,12 +1,13 @@
 /***
  *
  * @author Andrea García
+ * Week 1
  *
  * ***/
 
 
-fun createDeckofCards() : ArrayList<Card>{
-    var deck = ArrayList<Card>()
+fun createDeckOfCards() : ArrayList<Card>{
+    val deck = ArrayList<Card>()
     for(i in 0..3) {
         for (j in 1..13) {
             val card = Card(j,i)
