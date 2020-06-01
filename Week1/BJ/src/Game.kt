@@ -1,3 +1,5 @@
+import java.lang.StrictMath.min
+import kotlin.math.max
 import kotlin.system.exitProcess
 
 class Game {
@@ -25,7 +27,7 @@ class Game {
     private fun nextTurn(){
         var input: String
         var salir = true
-        if(!dealer.findWinner)
+        //if(!dealer.findWinner)
             for(player in players){
                 if(player.stillInGame){
                     println("Next turn: ${player.getName()}")
@@ -37,13 +39,13 @@ class Game {
                         else
                             salir = false
 
-                        if(!player.stillInGame || dealer.findWinner)
+                        if(!player.stillInGame)
                             salir = false
                     }
                 }
                 salir = true
             }
-        }
+    }
 
     fun start(){
         deckOfCards.shuffle()                                                                            //Mix the cards
@@ -52,6 +54,44 @@ class Game {
             dealer.giveCards(2, player)
         }
         dealer.cardDealer()
-        nextTurn()
+        //if(!dealer.findWinner){
+            dealer.turn = 2
+            nextTurn()
+            dealer.cardDealer()
+            dealer.stand()
+            nameWinner()
+        //}
+    }
+
+    fun nameWinner() {
+        val differenceDealer = 21 - dealer.getPoints()
+        var differencePlayer: Int
+        var winner = ""
+        if (!dealer.houseLose) {
+            for (player in players) {
+                differencePlayer = if (player.getPoints() in 1..21 && player.getPoints2() in 1..21)
+                    21 - max(player.getPoints(), player.getPoints2())
+                else if (player.getPoints() > 0 && player.getPoints2() > 0) {
+                    21 - min(player.getPoints(), player.getPoints2())
+                } else
+                    21 - max(player.getPoints(), player.getPoints2())
+
+                if (player.stillInGame)
+                    if (differencePlayer != differenceDealer) {
+                        if (differencePlayer < differenceDealer) {
+                            println("Player ${player.getName()} wins!")
+                        } else
+                            println("PLayer ${player.getName()} loses :(")
+                    } else {
+                        println("Draw!")
+                    }
+
+            }
+        } else{
+            for(player in players){
+                if(player.stillInGame)
+                    println("Player ${player.getName()} wins!")
+            }
+        }
     }
 }
