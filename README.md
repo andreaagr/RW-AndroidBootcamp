@@ -22,7 +22,8 @@ raywenderlich.com is a community site focused on creating high quality programmi
 - **Week 13 (Aug 17)**: Graduation week
 
 ## About me
-
-***Name:**Andrea García Ruiz*
-***Discord Name:**Andrea García*
-***Location:**Mexico City,Mexico*
+~~~
+Name: Andrea García Ruiz
+Discord Name: Andrea García
+Location: Mexico City,Mexico
+~~~
