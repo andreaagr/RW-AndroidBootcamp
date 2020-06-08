@@ -18,10 +18,11 @@ class Cat(
                         }else{
                                 check[0] = 1
                         }
-
                 // Remove cat from the shelter and sponsor
                 shelters[shelterId]?.cats?.remove(this)
                 // Remove sponsorships
+                adoptedCats.add(this)
+
         }
 
         fun sponsor(patronId: Int){
@@ -31,6 +32,7 @@ class Cat(
 
         companion object{
                 val sponsorships = mutableListOf<Sponsorship>()
+                val adoptedCats = mutableListOf<Cat>()
         }
 
 }

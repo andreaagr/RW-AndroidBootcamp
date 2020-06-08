@@ -8,6 +8,10 @@ open class Person(
         // id and quantity
         var check = mutableMapOf<Int,Int>()
 
+        fun initializeCheck(){
+                check.clear()
+        }
+
 
 
 }

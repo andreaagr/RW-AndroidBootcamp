@@ -30,5 +30,6 @@ class Employee(
                 if(!receipt.adoptCat)
                         receipt.total *= 0.85
                 receipts.add(receipt)
+                //check.clear()
         }
 }

@@ -24,6 +24,7 @@ fun main() {
     val patron1 = people[0] as Patron
     patron1.buy(2, 5)
     patron1.generateReceipt()
+    cat1.adopt(0)
     println(receipts.size)
     receipts.forEach() {
         println(it.printReceipt())
@@ -31,10 +32,18 @@ fun main() {
     // -----------------------------In case that is Employee
     val employee1 = people[1] as Employee
     employee1.buy(2, 5)
-    //cat2.adopt(1)
+    cat2.adopt(1)
     employee1.generateReceipt()
     receipts.forEach() {
         println(it.printReceipt())
     }
+    //------------------------------The client generates 2 receipts
+    patron1.initializeCheck()
+    patron1.buy(2, 10)
+    patron1.generateReceipt()
+    receipts.forEach() {
+        println(it.printReceipt())
+    }
 
+    println(Cafe().calculateNumberOfAdoptions())
 }

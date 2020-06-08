@@ -20,7 +20,7 @@ class Receipt (val menuItems : MutableMap<Int,Int>, val patronId : Int){
         menuItems.forEach(){
             num_items += it.value
         }
-        println("The total was $total for $num_items items realised by patron with id = $patronId")
+        println("The total was $total realised by patron with id = $patronId")
     }
 
 }

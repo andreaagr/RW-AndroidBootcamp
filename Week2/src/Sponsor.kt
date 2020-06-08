@@ -1,1 +1,1 @@
-class Sponsorship(catId: Int, patronId : Int)
+class Sponsorship(val catId: Int, val patronId : Int)

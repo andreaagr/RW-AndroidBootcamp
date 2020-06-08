@@ -10,6 +10,8 @@ open class Patron(
         val receipt = Receipt(check, id)
         receipt.calculateTotal()
         receipts.add(receipt)
+
+        //check.clear()
     }
 
     fun buy(menuId : Int, quantity : Int){
