@@ -60,7 +60,7 @@ class Dealer(private var deckOfCards : ArrayList<Card>) {
                 colorMessage("Congratulations! ${player.getName()} have a BlackJack","green")
             else
                 colorMessage("Congratulations! ${player.getName()} have 21 points","green")
-            //findWinner = true
+
         }else{
             colorMessage("${player.getName()} still in game", "cyan")
         }
@@ -75,7 +75,6 @@ class Dealer(private var deckOfCards : ArrayList<Card>) {
         if(points > 21) {
             colorMessage("The house lose :(","red")
             houseLose = true
-            //findWinner = true
         }
         else
             println("The dealer stands with $points")
@@ -86,4 +85,3 @@ class Dealer(private var deckOfCards : ArrayList<Card>) {
     }
 
 }
-//}

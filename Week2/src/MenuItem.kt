@@ -1,0 +1,1 @@
+class MenuItem (var price : Double, val menuId : Int, var desc : String)
