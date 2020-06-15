@@ -4,12 +4,5 @@
     <color name="colorPrimaryDark">#000063</color>
     <color name="colorAccent">#6746c3</color>
     <color name="location">#880e4f</color>
-
-
-
-    <color name="gradient_collapsing_center">#2BD2FF</color>
-    <color name="gradient_collapsing_end">#FC00FF</color>
     <color name="white">#FFFFFF</color>
-    <color name="gradient_item_end">#536DFE</color>
-
 </resources>
