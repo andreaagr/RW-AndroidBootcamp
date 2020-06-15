@@ -107,7 +107,7 @@ class MainActivity : AppCompatActivity() {
             "Linkedin" -> R.string.linkedin
             else -> 0
         }
-        
+
         val dialogMessage = getString(value)
         val builder = AlertDialog.Builder(this)
         builder.setTitle(option)
