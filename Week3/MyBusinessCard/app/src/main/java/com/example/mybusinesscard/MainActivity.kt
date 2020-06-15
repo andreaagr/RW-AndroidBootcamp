@@ -12,6 +12,7 @@ import com.google.android.material.appbar.AppBarLayout
 import kotlinx.android.synthetic.main.content_main.*
 import android.os.Build
 import android.util.Log
+import android.view.Menu
 import android.view.Surface
 import android.view.WindowManager
 import androidx.annotation.RequiresApi
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     var firstTime = true
     var constraintSetShow = ConstraintSet()
     var constraintSetHide = ConstraintSet()
+    lateinit var menu : Menu
 
     @RequiresApi(Build.VERSION_CODES.KITKAT)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -116,4 +118,12 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        this.menu = menu!!
+        menuInflater.inflate(R.menu.menu_scrolling, menu)
+        
+        return true
+        //return super.onCreateOptionsMenu(menu)
+    }
 }
