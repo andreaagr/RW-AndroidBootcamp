@@ -76,28 +76,31 @@
             app:layout_constraintBottom_toBottomOf="@+id/imageView14"/>
     <ImageView
             android:layout_width="60dp"
-            android:layout_height="60dp" app:srcCompat="@drawable/twitter" android:id="@+id/imageView9"
+            android:layout_height="60dp" app:srcCompat="@drawable/twitter" android:id="@+id/iv_twitter"
             app:layout_constraintStart_toEndOf="@+id/fullname"
-            app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toStartOf="@+id/imageView8"
-            app:layout_constraintTop_toTopOf="@+id/imageView8"/>
+            app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toStartOf="@+id/iv_github"
+            app:layout_constraintTop_toTopOf="@+id/iv_github"/>
     <ImageView
             android:layout_width="60dp"
-            android:layout_height="60dp" app:srcCompat="@drawable/linkedin" android:id="@+id/imageView10"
-            app:layout_constraintStart_toEndOf="@+id/imageView8" app:layout_constraintHorizontal_bias="0.5"
+            android:layout_height="60dp" app:srcCompat="@drawable/linkedin"
+            android:id="@+id/iv_linkedin"
+            app:layout_constraintStart_toEndOf="@+id/iv_github" app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/imageView8"/>
+            app:layout_constraintTop_toTopOf="@+id/iv_github"/>
     <ImageView
             android:layout_width="60dp"
-            android:layout_height="60dp" app:srcCompat="@drawable/github" android:id="@+id/imageView8"
-            app:layout_constraintStart_toEndOf="@+id/imageView9" app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintEnd_toStartOf="@+id/imageView10" android:layout_marginTop="8dp"
+            android:layout_height="60dp"
+            app:srcCompat="@drawable/github"
+            android:id="@+id/iv_github"
+            app:layout_constraintStart_toEndOf="@+id/iv_twitter" app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toStartOf="@+id/iv_linkedin" android:layout_marginTop="8dp"
             app:layout_constraintTop_toTopOf="parent"/>
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="250dp"
             android:layout_height="40dp"
             android:background="@drawable/rounded_card"
-            app:layout_constraintTop_toBottomOf="@+id/imageView8"
+            app:layout_constraintTop_toBottomOf="@+id/iv_github"
             android:layout_marginTop="32dp"
             android:id="@+id/linearLayout4"
             app:layout_constraintStart_toStartOf="@+id/imageView13">
@@ -122,7 +125,7 @@
             android:layout_height="40dp"
             android:background="@drawable/rounded_card"
             android:layout_marginTop="32dp"
-            app:layout_constraintTop_toBottomOf="@+id/imageView9" android:id="@+id/linearLayout3"
+            app:layout_constraintTop_toBottomOf="@+id/iv_twitter" android:id="@+id/linearLayout3"
             app:layout_constraintStart_toStartOf="@+id/fullname">
 
         <TextView

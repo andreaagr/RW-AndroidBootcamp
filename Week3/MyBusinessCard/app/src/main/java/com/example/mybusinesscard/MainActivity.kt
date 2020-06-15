@@ -1,25 +1,18 @@
 package com.example.mybusinesscard
 
+import android.app.AlertDialog
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.transition.TransitionManager
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintSet
-import androidx.core.view.ViewCompat.getRotation
-import androidx.core.view.isVisible
-import androidx.core.view.marginTop
 import kotlinx.android.synthetic.main.activity_main.*
 import com.google.android.material.appbar.AppBarLayout
 import kotlinx.android.synthetic.main.content_main.*
-import android.view.Surface.ROTATION_90
-import android.view.Surface.ROTATION_180
-import android.view.Surface.ROTATION_0
-import android.content.Context.WINDOW_SERVICE
 import android.os.Build
 import android.util.Log
 import android.view.Surface
-import androidx.core.content.ContextCompat.getSystemService
 import android.view.WindowManager
 import androidx.annotation.RequiresApi
 
@@ -83,6 +76,19 @@ class MainActivity : AppCompatActivity() {
             //---------------------------------------------------------------------------------------------------
         })
         //-------------------------------------------------------------------------------------------------------
+        iv_github.setOnClickListener{
+            showInfo("Github")
+
+        }
+
+        iv_linkedin.setOnClickListener {
+            showInfo("Linkedin")
+        }
+
+        iv_twitter.setOnClickListener {
+            showInfo("Twitter")
+        }
+
     }
 
     fun getRotation(context: Context): String {
@@ -92,6 +98,22 @@ class MainActivity : AppCompatActivity() {
             Surface.ROTATION_90 -> return "horizontal"
             else -> return "horizontal"
         }
+    }
+
+    fun showInfo(option : String){
+        val value = when(option){
+            "Twitter"-> R.string.twitter
+            "Github" -> R.string.telegram
+            "Linkedin" -> R.string.linkedin
+            else -> 0
+        }
+        
+        val dialogMessage = getString(value)
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle(option)
+        builder.setMessage(dialogMessage)
+        builder.create().show()
+
     }
 
 }

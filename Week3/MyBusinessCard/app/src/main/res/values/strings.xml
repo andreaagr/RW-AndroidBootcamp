@@ -10,4 +10,8 @@
     <string name="twitter">/@Hey_There_Andy</string>
     <string name="string_occupation">Occupation</string>
     <string name="string_contact">Contact Details</string>
+    <string name="string_github">Github</string>
+    <string name="string_linkedin">Linkedin</string>
+    <string name="string_twitter">Twitter</string>
+    <string name="linkedin">www.linkedin.com/in/andrea-garcía-ruiz-934159164</string>
 </resources>
