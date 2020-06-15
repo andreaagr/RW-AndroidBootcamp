@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#64b5f6</color>
-    <color name="colorPrimaryDark">#2286c3</color>
-    <color name="colorAccent">#D81B60</color>
-    <color name="gradient_collapsing_init">#8EC5FC</color>
-    <color name="gradient_collapsing_end">#E0C3FC</color>
+    <color name="colorPrimary">#311b92</color>
+    <color name="colorPrimaryDark">#000063</color>
+    <color name="colorAccent">#6746c3</color>
+    <color name="location">#880e4f</color>
+
+
+
+    <color name="gradient_collapsing_center">#2BD2FF</color>
+    <color name="gradient_collapsing_end">#FC00FF</color>
+    <color name="white">#FFFFFF</color>
+    <color name="gradient_item_end">#536DFE</color>
+
 </resources>

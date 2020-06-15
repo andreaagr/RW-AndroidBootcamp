@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">MyBusinessCard</string>
     <string name="name">Andrea García</string>
+    <string name="occupation">College Student</string>
+    <string name="occupation2">Android Bootcamp Student</string>
+    <string name="occupation3">Instructor</string>
+    <string name="location">Mexico City, Mexico</string>
+    <string name="email">andiee.grr@gmail.com</string>
+    <string name="telegram">/@andreaagr</string>
+    <string name="twitter">/@Hey_There_Andy</string>
+    <string name="string_occupation">Occupation</string>
+    <string name="string_contact">Contact Details</string>
 </resources>

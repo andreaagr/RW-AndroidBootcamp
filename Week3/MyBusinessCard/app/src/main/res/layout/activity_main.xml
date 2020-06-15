@@ -21,8 +21,8 @@
             <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
-                    android:src="@drawable/gradient_collapsing"
-                    android:scaleType="centerCrop" android:contentDescription='""'/>
+                    android:src="@drawable/background"
+                    android:scaleType="centerCrop"/>
 
             <androidx.appcompat.widget.Toolbar
                     android:id="@+id/toolbar"
@@ -30,31 +30,24 @@
                     android:layout_width="match_parent">
 
             </androidx.appcompat.widget.Toolbar>
+
         </com.google.android.material.appbar.CollapsingToolbarLayout>
+
     </com.google.android.material.appbar.AppBarLayout>
     <!--_______________________________Toolbar________________________________-->
     <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
             android:src="@drawable/imageprofile"
-            app:layout_anchorGravity="bottom|center"
-            app:layout_anchor="@+id/appbar"
+            app:layout_anchorGravity="bottom|center_horizontal"
             android:id="@+id/img_profile"
-    />
-
-    <androidx.core.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            app:layout_anchor="@+id/appbar"
+            android:layout_marginStart="10dp"/>
 
 
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    </androidx.core.widget.NestedScrollView>
+    <include layout="@layout/content_main"></include>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
 
