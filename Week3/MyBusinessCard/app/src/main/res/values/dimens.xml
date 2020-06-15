@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--Vertical content_main.xml-->
+    <dimen name="image_size_vertical">50dp</dimen>
+    <dimen name="image_size_horizontal">60dp</dimen>
+    <dimen name="logo_size_vertical">45dp</dimen>
+    <dimen name="title_size">34sp</dimen>
+    <dimen name="location_size">12sp</dimen>
+    <dimen name="sections_margin">25dp</dimen>
+    <dimen name="sections_textsize">18sp</dimen>
+    <dimen name="section_height">40dp</dimen>
+    <dimen name="section_margin_end">20dp</dimen>
+    <dimen name="card_margin">8dp</dimen>
+    <dimen name="card_radius">15dp</dimen>
+    <dimen name="image_margin">8dp</dimen>
+    <dimen name="text_start">24dp</dimen>
+    <dimen name="title_margin">16dp</dimen>
+    <dimen name="button_margin">8dp</dimen>
+    <dimen name="separation_text_content">24dp</dimen>
+    <dimen name="image_rw">35dp</dimen>
+    <dimen name="margin_rw_image">4dp</dimen>
+    <!--Vertical activity_main.xml-->
+    <dimen name="collapsing_bar_height">150dp</dimen>
+    <dimen name="circle_image_size">125dp</dimen>
+    <dimen name="circle_image_start">10dp</dimen>
+    <!--Landscape content_main.xml-->
+    <dimen name="title_margin_land">16dp</dimen>
+    <dimen name="margin_top_constraint_land">50dp</dimen>
+    <dimen name="margin_top_logo_telegram">16dp</dimen>
+    <dimen name="sections_textsize_land">20sp</dimen>
+    <dimen name="sections_mstart_land">30dp</dimen>
+    <dimen name="mstart_end_section">8dp</dimen>
+    <dimen name="section_height_land">30dp</dimen>
+    <dimen name="section_width_land">300dp</dimen>
+    <dimen name="image_rw_land">50dp</dimen>
+    <!--Landscape content_main_detail.xml-->
+    <dimen name="section_width_ldetail">250dp</dimen>
+    <dimen name="section_height_ldetail">40dp</dimen>
+    <dimen name="text_section_start">30dp</dimen>
+
+
+
+</resources>
