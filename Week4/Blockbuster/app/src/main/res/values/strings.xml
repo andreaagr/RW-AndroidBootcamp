@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Blockbuster</string>
+    <string name="action_settings">Settings</string>
+    <string name="favorite_movie_title">Favorite Movie</string>
+    <string name="title_msg">Title: Movie Title</string>
+    <string name="poster_fav">Poster</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
