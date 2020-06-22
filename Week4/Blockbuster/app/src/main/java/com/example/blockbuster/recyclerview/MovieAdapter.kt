@@ -1,9 +1,11 @@
-package com.example.blockbuster
+package com.example.blockbuster.recyclerview
 
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.blockbuster.data.Movie
+import com.example.blockbuster.R
 
 class MovieAdapter(private var movieList : MutableList<Movie>, private val clickListener : MovieClickListener) : RecyclerView.Adapter<MovieViewHolder>() {
 

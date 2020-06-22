@@ -1,4 +1,4 @@
-package com.example.blockbuster
+package com.example.blockbuster.data
 
 import java.io.Serializable
 import java.util.*

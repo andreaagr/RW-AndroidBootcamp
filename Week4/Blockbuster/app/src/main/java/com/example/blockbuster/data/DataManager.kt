@@ -1,7 +1,8 @@
-package com.example.blockbuster
+package com.example.blockbuster.data
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.blockbuster.R
 
 class DataManager : ViewModel() {
     private var selected : MutableLiveData<Movie> = MutableLiveData()
@@ -18,8 +19,24 @@ class DataManager : ViewModel() {
     fun initMovieList(){
         // Init the list with 2 elements
         data.value = mutableListOf(
-            Movie(0,null,"Howl's Moving Castle","",R.drawable.movie1,"Animation", 0.5f),
-            Movie(1,null,"Spirited away","",R.drawable.movie2,"Animation",3.5f)
+            Movie(
+                0,
+                null,
+                "Howl's Moving Castle",
+                "",
+                R.drawable.movie1,
+                "Animation",
+                0.5f
+            ),
+            Movie(
+                1,
+                null,
+                "Spirited away",
+                "",
+                R.drawable.movie2,
+                "Animation",
+                3.5f
+            )
         )
     }
 
@@ -31,5 +48,5 @@ class DataManager : ViewModel() {
         return data.value
     }
 
-    
+
 }

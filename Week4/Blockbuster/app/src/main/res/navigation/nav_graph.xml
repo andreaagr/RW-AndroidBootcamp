@@ -6,7 +6,7 @@
         app:startDestination="@id/mainFragment">
     <fragment
             android:id="@+id/mainFragment"
-            android:name="com.example.blockbuster.MainFragment"
+            android:name="com.example.blockbuster.fragments.MainFragment"
             android:label="fragment_main"
             tools:layout="@layout/fragment_main" >
         <action
@@ -18,12 +18,12 @@
     </fragment>
     <fragment
             android:id="@+id/movieFragment"
-            android:name="com.example.blockbuster.MovieFragment"
+            android:name="com.example.blockbuster.fragments.MovieFragment"
             android:label="fragment_movie"
             tools:layout="@layout/fragment_movie" />
     <fragment
             android:id="@+id/addMovieFragment"
-            android:name="com.example.blockbuster.AddMovieFragment"
+            android:name="com.example.blockbuster.fragments.AddMovieFragment"
             android:label="fragment_add_movie"
             tools:layout="@layout/fragment_add_movie" >
         <action

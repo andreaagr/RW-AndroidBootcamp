@@ -1,4 +1,4 @@
-package com.example.blockbuster
+package com.example.blockbuster.fragments
 
 import android.app.Activity
 import android.content.Intent
@@ -11,6 +11,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import com.example.blockbuster.data.DataManager
+import com.example.blockbuster.data.Movie
+import com.example.blockbuster.R
 import kotlinx.android.synthetic.main.fragment_add_movie.*
 
 class AddMovieFragment : Fragment() {
@@ -34,7 +37,15 @@ class AddMovieFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         bt_add_movie.setOnClickListener {
             // When the button is clicked a new movie is added to the Recycler View
-            val newMovie = Movie(3,null,et_movie_title.text.toString(),"",imageResource,"",0.0f)
+            val newMovie = Movie(
+                3,
+                null,
+                et_movie_title.text.toString(),
+                "",
+                imageResource,
+                "",
+                0.0f
+            )
             // Add the movie in a Recycler View
             model.addElement(newMovie)
             // Show a message
@@ -52,7 +63,9 @@ class AddMovieFragment : Fragment() {
         val intent= Intent()
         intent.type= "image/*"
         intent.action= Intent.ACTION_GET_CONTENT
-        startActivityForResult(Intent.createChooser(intent,"Choose an image..."), IMAGE_CODE)
+        startActivityForResult(Intent.createChooser(intent,"Choose an image..."),
+            IMAGE_CODE
+        )
     }
 
 

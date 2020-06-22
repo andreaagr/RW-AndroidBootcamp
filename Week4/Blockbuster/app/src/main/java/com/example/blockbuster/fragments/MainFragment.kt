@@ -1,4 +1,4 @@
-package com.example.blockbuster
+package com.example.blockbuster.fragments
 
 import android.os.Bundle
 import android.view.*
@@ -7,9 +7,14 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.blockbuster.data.DataManager
+import com.example.blockbuster.data.Movie
+import com.example.blockbuster.recyclerview.MovieAdapter
+import com.example.blockbuster.R
 import kotlinx.android.synthetic.main.fragment_main.*
 
-class MainFragment : Fragment() , MovieAdapter.MovieClickListener{
+class MainFragment : Fragment() ,
+    MovieAdapter.MovieClickListener {
 
     private lateinit var model : DataManager
     private var movieList = mutableListOf<Movie>()
@@ -50,7 +55,8 @@ class MainFragment : Fragment() , MovieAdapter.MovieClickListener{
         //---------------------------------Setting the Recycler View
         val numberOfColumns = 2
         rv_movies.layoutManager = GridLayoutManager(activity, numberOfColumns)
-        val adapter = MovieAdapter(movieList,this)
+        val adapter =
+            MovieAdapter(movieList, this)
         rv_movies.adapter = adapter
         //----------------------------------------------------------
         fab.setOnClickListener {
