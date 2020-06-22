@@ -1,9 +1,10 @@
 package com.example.blockbuster
 
+import java.io.Serializable
 import java.util.*
 
 class Movie(
     val id: Int, val releaseDate: Date?,
-    var tittle: String,
+    var title: String,
     val summary: String,
-    var poster: Int, var genre: String, var stars: Float)
+    var poster: Any?, var genre: String, var stars: Float) : Serializable

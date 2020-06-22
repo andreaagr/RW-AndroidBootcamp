@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/nav_graph"
+        app:startDestination="@id/mainFragment">
+    <fragment
+            android:id="@+id/mainFragment"
+            android:name="com.example.blockbuster.MainFragment"
+            android:label="fragment_main"
+            tools:layout="@layout/fragment_main" >
+        <action
+                android:id="@+id/action_mainFragment_to_movieFragment"
+                app:destination="@id/movieFragment" />
+        <action
+                android:id="@+id/action_mainFragment_to_addMovieFragment"
+                app:destination="@id/addMovieFragment" />
+    </fragment>
+    <fragment
+            android:id="@+id/movieFragment"
+            android:name="com.example.blockbuster.MovieFragment"
+            android:label="fragment_movie"
+            tools:layout="@layout/fragment_movie" />
+    <fragment
+            android:id="@+id/addMovieFragment"
+            android:name="com.example.blockbuster.AddMovieFragment"
+            android:label="fragment_add_movie"
+            tools:layout="@layout/fragment_add_movie" >
+        <action
+                android:id="@+id/action_addMovieFragment_self"
+                app:destination="@id/addMovieFragment"
+                app:popUpTo="@id/mainFragment" />
+    </fragment>
+</navigation>

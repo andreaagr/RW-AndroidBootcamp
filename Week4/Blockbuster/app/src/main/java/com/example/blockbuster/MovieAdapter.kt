@@ -1,30 +1,38 @@
 package com.example.blockbuster
 
+import android.net.Uri
 import android.view.LayoutInflater
-import android.view.OrientationEventListener
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class MoviesAdapter(private var movieList : MutableList<Movie>, val clickListener : MovieClickListener) : RecyclerView.Adapter<MoviesViewHolder>() {
+class MovieAdapter(private var movieList : MutableList<Movie>, private val clickListener : MovieClickListener) : RecyclerView.Adapter<MovieViewHolder>() {
 
     interface MovieClickListener{
         fun listItemClick(movie : Movie)
     }
 
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.movie_item,parent,false)
-        return MoviesViewHolder(view)
+        return MovieViewHolder(view)
     }
 
     override fun getItemCount(): Int {
         return movieList.size
     }
 
-    override fun onBindViewHolder(holder: MoviesViewHolder, position: Int) {
-        holder.poster.setImageResource(movieList.get(position).poster)
-        holder.title.text = movieList.get(position).tittle
-        holder.genre.text = movieList.get(position).genre
+    override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
+        val element = movieList[position]
+        // Two ways to load an image, one for the drawable resources and another for the elements added
+        if(element.poster is Int){
+            holder.poster.setImageResource(element.poster as Int)
+        }else if(element.poster is Uri){
+            holder.poster.setImageURI(element.poster as Uri)
+        }
+        //---------------------------------------------------------------------------------------------
+        //holder.poster.setImageResource(movieList.get(position).poster as Int)
+        holder.title.text = element.title
+        holder.genre.text = element.genre
+
         holder.itemView.setOnClickListener {
             clickListener.listItemClick(movieList[position])
         }
