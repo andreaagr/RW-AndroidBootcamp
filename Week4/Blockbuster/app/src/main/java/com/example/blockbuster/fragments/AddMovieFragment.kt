@@ -36,22 +36,26 @@ class AddMovieFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         bt_add_movie.setOnClickListener {
-            // When the button is clicked a new movie is added to the Recycler View
-            val newMovie = Movie(
-                3,
-                null,
-                et_movie_title.text.toString(),
-                "",
-                imageResource,
-                "",
-                0.0f
-            )
-            // Add the movie in a Recycler View
-            model.addElement(newMovie)
-            // Show a message
-            Toast.makeText(activity,"A new item has been added!", Toast.LENGTH_SHORT).show()
-            // Create another fragment
-            view.findNavController().navigate(R.id.action_addMovieFragment_self)
+            if(missingFields())
+                Toast.makeText(activity,"There are some missing fields...", Toast.LENGTH_SHORT).show()
+            else {
+                // When the button is clicked a new movie is added to the Recycler View
+                val newMovie = Movie(
+                    model.data.value?.size!!,
+                    et_date.text.toString(),
+                    et_movie_title.text.toString(),
+                    et_summary.text.toString(),
+                    imageResource,
+                    et_genre.text.toString(),
+                    rb_choose_stars.rating
+                )
+                // Add the movie in the Recycler View
+                model.addElement(newMovie)
+                // Show a message
+                Toast.makeText(activity, "A new item has been added!", Toast.LENGTH_SHORT).show()
+                // Create another fragment
+                view.findNavController().navigate(R.id.action_addMovieFragment_self)
+            }
         }
 
         iv_add_image.setOnClickListener {
@@ -68,10 +72,13 @@ class AddMovieFragment : Fragment() {
         )
     }
 
+    private fun missingFields() : Boolean{
+        return (et_movie_title.text.isEmpty() || et_genre.text.isEmpty() || et_date.text.isEmpty())
+    }
+
 
     companion object {
         private const val IMAGE_CODE=123
-
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

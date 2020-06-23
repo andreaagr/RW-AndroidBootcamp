@@ -21,16 +21,16 @@ class DataManager : ViewModel() {
         data.value = mutableListOf(
             Movie(
                 0,
-                null,
+                "",
                 "Howl's Moving Castle",
                 "",
                 R.drawable.movie1,
                 "Animation",
-                0.5f
+                4.5f
             ),
             Movie(
                 1,
-                null,
+                "",
                 "Spirited away",
                 "",
                 R.drawable.movie2,

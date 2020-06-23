@@ -24,19 +24,19 @@ class MovieAdapter(private var movieList : MutableList<Movie>, private val click
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         val element = movieList[position]
-        // Two ways to load an image, one for the drawable resources and another for the elements added
+        //---- Two ways to load an image, one for drawable resources and another for the elements added
         if(element.poster is Int){
             holder.poster.setImageResource(element.poster as Int)
         }else if(element.poster is Uri){
             holder.poster.setImageURI(element.poster as Uri)
         }
         //---------------------------------------------------------------------------------------------
-        //holder.poster.setImageResource(movieList.get(position).poster as Int)
         holder.title.text = element.title
-        holder.genre.text = element.genre
 
         holder.itemView.setOnClickListener {
             clickListener.listItemClick(movieList[position])
         }
+
+        holder.rating.rating = element.stars
     }
 }
