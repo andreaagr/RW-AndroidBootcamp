@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/nav_graph"
+        app:startDestination="@id/loginFragment">
+    <fragment
+            android:id="@+id/mainFragment"
+            android:name="com.example.blockbuster.fragments.MainFragment"
+            android:label="fragment_main"
+            tools:layout="@layout/fragment_main" >
+        <action
+                android:id="@+id/action_mainFragment_to_movieFragment"
+                app:destination="@id/movieFragment" />
+        <action
+                android:id="@+id/action_mainFragment_to_addMovieFragment"
+                app:destination="@id/addMovieFragment" />
+        <action
+                android:id="@+id/action_mainFragment_to_loginFragment"
+                app:destination="@id/loginFragment"
+                app:popUpTo="@id/loginFragment"
+                app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+            android:id="@+id/movieFragment"
+            android:name="com.example.blockbuster.fragments.MovieFragment"
+            android:label="fragment_movie"
+            tools:layout="@layout/fragment_movie" />
+    <fragment
+            android:id="@+id/addMovieFragment"
+            android:name="com.example.blockbuster.fragments.AddMovieFragment"
+            android:label="fragment_add_movie"
+            tools:layout="@layout/fragment_add_movie" >
+        <action
+                android:id="@+id/action_addMovieFragment_self"
+                app:destination="@id/addMovieFragment"
+                app:popUpTo="@id/mainFragment" />
+    </fragment>
+    <fragment
+            android:id="@+id/loginFragment"
+            android:name="com.example.blockbuster.fragments.LoginFragment"
+            android:label="fragment_login"
+            tools:layout="@layout/fragment_login" >
+        <action
+                android:id="@+id/action_loginFragment_to_mainFragment"
+                app:destination="@id/mainFragment"
+                app:popUpToInclusive="true"
+                />
+    </fragment>
+</navigation>

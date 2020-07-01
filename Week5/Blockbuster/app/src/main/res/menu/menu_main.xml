@@ -1,0 +1,21 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:context="com.example.blockbuster.MainActivity">
+
+    <!--<item android:id="@+id/option_genre"
+          android:title="@string/option_genre"
+          android:orderInCategory="100"
+          app:showAsAction="never"/>
+    <item
+            android:id="@+id/option_stars"
+            android:title="@string/option_stars" />-->
+
+    <item
+            android:id="@+id/switch_menu"
+            android:title=""
+            android:actionLayout="@layout/switch_layout"
+            app:showAsAction="always"
+            android:checkable="true"
+            />
+</menu>
