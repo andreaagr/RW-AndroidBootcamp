@@ -39,7 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:fontFamily="@font/loginfont"
+            app:fontFamily="@font/loginfont"
             android:text="@string/login_message"
             android:textColor="@android:color/white"
             android:textSize="60sp"
@@ -88,6 +88,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/pass_login"
                 android:inputType="textPassword"
+                android:theme="@style/InputTextLayout"
                 />
     </com.google.android.material.textfield.TextInputLayout>
 
