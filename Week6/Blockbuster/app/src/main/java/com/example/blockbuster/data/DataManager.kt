@@ -4,19 +4,23 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.blockbuster.MyPrefs
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-
 
 class DataManager(application: Application) : AndroidViewModel(application) {
 
     private val repository = Injection.providedMovieRepository()
     private var selected : MutableLiveData<Movie> = MutableLiveData()
-    private val allMovies = repository.getMovies()
-    var data = MutableLiveData<MutableList<Movie>>()
-    private var myPrefs = MyPrefs(application)
+    private val myPrefs = MyPrefs(application)
     private var isLogged = myPrefs.getPrefs()
+    var data = MutableLiveData<MutableList<Movie>>()
+
+    init {
+        // ------------Initialize Movie List when the application loads
+        viewModelScope.launch(Dispatchers.IO) {
+            data.postValue(repository.getMovies() as MutableList<Movie>)
+        }
+    }
 
     fun setMovieSelected(movie: Movie){
         selected.value = movie
@@ -26,16 +30,13 @@ class DataManager(application: Application) : AndroidViewModel(application) {
         return selected.value
     }
 
-    fun initMovieList(){
-        // ------------Initialize Movie List when the application loads
-        data.value = allMovies as MutableList<Movie>
-    }
-
     fun addMovie(movie: Movie){
         // For RecyclerView
         data.value?.add(movie)
         // Adding the element into database
-        repository.addMovie(movie)
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.addMovie(movie)
+        }
     }
 
     fun setLoggedStatus(status : Boolean){
@@ -44,4 +45,5 @@ class DataManager(application: Application) : AndroidViewModel(application) {
     }
 
     fun getLoggedStatus() : Boolean = isLogged
+
 }

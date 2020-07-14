@@ -16,6 +16,7 @@ class RoomRepository() : MovieRepository {
     }
 
     override fun getMovies() = allMovies
+
     private class InsertMovieAsyncTask internal constructor(private val movieDao: MovieDao) : AsyncTask<Movie, Void, Void>(){
         override fun doInBackground(vararg p0: Movie?): Void ?{
             movieDao.insertMovie(p0[0]!!)
