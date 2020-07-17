@@ -10,11 +10,15 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.catapi.R
 import com.example.catapi.model.Breed
 import com.example.catapi.model.Cat
+import com.example.catapi.model.MyViewModel
 import com.example.catapi.model.Success
 import com.example.catapi.networking.NetworkStatusChecker
 import com.example.catapi.networking.RemoteApi
@@ -36,6 +40,8 @@ class SecondFragment : Fragment() {
 
     private lateinit var breedMap : Map<String,String>
     private var image = ""
+    //val model: MyViewModel by viewModels()
+    private lateinit var model : MyViewModel
 
     private val networkStatusChecker by lazy {
         NetworkStatusChecker(activity?.getSystemService(ConnectivityManager::class.java))
@@ -94,6 +100,11 @@ class SecondFragment : Fragment() {
         }
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        model = activity?.let { ViewModelProvider(it).get(MyViewModel::class.java) }!!
+    }
+
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
@@ -126,7 +137,17 @@ class SecondFragment : Fragment() {
         //------------------------------------------------------------------------------------ Button for add a new cat
         bt_new_cat.setOnClickListener {
             if (!emptyName()){
-                var cat = Cat(et_cat_name.text.toString(),sp_breed.selectedItem.toString(),sp_genre.selectedItem.toString(),image)
+                val cat = Cat(et_cat_name.text.toString(),sp_breed.selectedItem.toString(),sp_genre.selectedItem.toString(),image)
+                // Add changes in the database
+                println("Gatos en second ${model.data.value}")
+                model.addCat(cat)
+
+                // Show a message
+                Toast.makeText(activity, "A new item has been added!", Toast.LENGTH_SHORT).show()
+                view.findNavController().navigate(R.id.action_SecondFragment_self)
+
+                println("Gatos actualizados ${model.data.value}")
+
 
             }else
                 Toast.makeText(activity,"The cat must have a name!",Toast.LENGTH_SHORT).show()
