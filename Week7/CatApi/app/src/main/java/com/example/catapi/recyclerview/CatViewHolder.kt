@@ -1,9 +1,6 @@
 package com.example.catapi.recyclerview
 
 import android.view.View
-import android.widget.ImageView
-import android.widget.RatingBar
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.cat_item.view.*
 

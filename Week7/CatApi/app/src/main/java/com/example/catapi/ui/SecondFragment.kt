@@ -3,26 +3,22 @@ package com.example.catapi.ui
 import android.net.ConnectivityManager
 import android.os.Build
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.example.catapi.LoadingDialog
+import com.example.catapi.MainActivity
 import com.example.catapi.R
-import com.example.catapi.model.Breed
-import com.example.catapi.model.Cat
-import com.example.catapi.model.MyViewModel
-import com.example.catapi.model.Success
-import com.example.catapi.networking.NetworkStatusChecker
-import com.example.catapi.networking.RemoteApi
-import com.example.catapi.networking.buildApiService
+import com.example.catapi.model.*
+import com.example.catapi.networking.*
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
@@ -32,6 +28,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.lang.reflect.Type
 
+
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
@@ -40,8 +37,8 @@ class SecondFragment : Fragment() {
 
     private lateinit var breedMap : Map<String,String>
     private var image = ""
-    //val model: MyViewModel by viewModels()
     private lateinit var model : MyViewModel
+
 
     private val networkStatusChecker by lazy {
         NetworkStatusChecker(activity?.getSystemService(ConnectivityManager::class.java))
@@ -78,9 +75,13 @@ class SecondFragment : Fragment() {
     private val genreList = arrayOf("Male","Female")
 
     private fun obtainBreedList(){
+        val loadingDialog = activity?.let { LoadingDialog(it) }
+        loadingDialog?.startDialog()
+
         GlobalScope.launch(Dispatchers.Main) {
-            networkStatusChecker.performIfConnectedToInternet {
+            if(!networkStatusChecker.performIfConnectedToInternet {
                 val result = remoteApiBreed.getBreedList()
+
                 if (result is Success) {
                     breedMap = result.data.map { it.name to it.id }.toMap()
 
@@ -94,9 +95,23 @@ class SecondFragment : Fragment() {
                     }
                     breedAdapter?.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                     sp_breed.adapter = breedAdapter
+                    loadingDialog?.dismissDialog()
                     //------------------------------------------------------------------------------------------
+
                 }
+            }){
+                Toast.makeText(activity,"Some functions would be no available without internet connection :(", Toast.LENGTH_SHORT).show()
+                val breedAdapter = activity?.let {
+                    ArrayAdapter(
+                        it,
+                        android.R.layout.simple_spinner_dropdown_item,
+                        arrayOf("Nothing to show")
+                    )
+                }
+                breedAdapter?.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                sp_breed.adapter = breedAdapter
             }
+
         }
     }
 
@@ -139,16 +154,11 @@ class SecondFragment : Fragment() {
             if (!emptyName()){
                 val cat = Cat(et_cat_name.text.toString(),sp_breed.selectedItem.toString(),sp_genre.selectedItem.toString(),image)
                 // Add changes in the database
-                println("Gatos en second ${model.data.value}")
                 model.addCat(cat)
 
                 // Show a message
                 Toast.makeText(activity, "A new item has been added!", Toast.LENGTH_SHORT).show()
                 view.findNavController().navigate(R.id.action_SecondFragment_self)
-
-                println("Gatos actualizados ${model.data.value}")
-
-
             }else
                 Toast.makeText(activity,"The cat must have a name!",Toast.LENGTH_SHORT).show()
         }
@@ -162,7 +172,7 @@ class SecondFragment : Fragment() {
 
     private fun searchCat(breedSelected : String){
         GlobalScope.launch(Dispatchers.Main) {
-            networkStatusChecker.performIfConnectedToInternet {
+            if(!networkStatusChecker.performIfConnectedToInternet {
 
                 val result = breedMap[breedSelected]?.let { remoteApiImage.getCatImage(it) }
 
@@ -175,8 +185,11 @@ class SecondFragment : Fragment() {
                             .diskCacheStrategy(DiskCacheStrategy.ALL)
                             .into(iv_cat_random)
                     }
-                }
-            }
+                }else if(result is Failure)
+                    println(result.error)
+            })
+                Toast.makeText(activity,"You don't have internet connection! :(", Toast.LENGTH_SHORT).show()
         }
     }
+
 }

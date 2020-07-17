@@ -12,10 +12,6 @@ import com.example.catapi.model.Cat
 
 class CatAdapter(private var catList : MutableList<Cat>) : RecyclerView.Adapter<CatViewHolder>() {
 
-    interface CatClickListener{
-        fun listItemClick(movie : Cat)
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CatViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.cat_item,parent,false)
         return CatViewHolder(view)
@@ -29,7 +25,7 @@ class CatAdapter(private var catList : MutableList<Cat>) : RecyclerView.Adapter<
         val url = catList[position].url
         val breed = "Breed: "+catList[position].breed
         val genre = "Genre: "+catList[position].sex
-        println(catList[position].sex)
+
         holder.name.text = catList[position].name
         holder.breed.text = breed
         holder.genre.text = genre
@@ -38,11 +34,6 @@ class CatAdapter(private var catList : MutableList<Cat>) : RecyclerView.Adapter<
                 .centerCrop()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.photo)
-
-        /*
-        holder.itemView.setOnClickListener {
-            clickListener.listItemClick(catList[position])
-        }*/
     }
 
 

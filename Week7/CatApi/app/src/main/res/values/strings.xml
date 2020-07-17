@@ -18,4 +18,5 @@
     <string name="label_name">Cat Name</string>
     <string name="label_breed">Breed</string>
     <string name="label_genre">Genre</string>
+    <string name="loading_message">Loading...</string>
 </resources>

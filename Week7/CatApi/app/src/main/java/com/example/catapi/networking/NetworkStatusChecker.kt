@@ -5,13 +5,15 @@ import android.net.NetworkCapabilities
 import android.os.Build
 import androidx.annotation.RequiresApi
 
-class NetworkStatusChecker(private val connectivityManager: ConnectivityManager?) {
+class NetworkStatusChecker(private val connectivityManager: ConnectivityManager?){
 
     @RequiresApi(Build.VERSION_CODES.M)
-    inline fun performIfConnectedToInternet(action: () -> Unit) {
-        if (hasInternetConnection()) {
+    inline fun performIfConnectedToInternet(action: () -> Unit) : Boolean {
+        return if (hasInternetConnection()) {
             action()
-        }
+            true
+        }else
+            false
     }
 
     @RequiresApi(Build.VERSION_CODES.M)

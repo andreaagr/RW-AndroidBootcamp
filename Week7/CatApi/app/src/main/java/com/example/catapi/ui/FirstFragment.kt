@@ -1,17 +1,15 @@
 package com.example.catapi.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.catapi.R
-import com.example.catapi.model.Cat
 import com.example.catapi.model.MyViewModel
 import com.example.catapi.recyclerview.CatAdapter
 import kotlinx.android.synthetic.main.fragment_first.*
@@ -21,15 +19,12 @@ import kotlinx.android.synthetic.main.fragment_first.*
  */
 class FirstFragment : Fragment() {
 
-    //val model: MyViewModel by viewModels()
     private lateinit var model : MyViewModel
     private val adapter = CatAdapter(mutableListOf())
-    //private var catList = mutableListOf<Cat>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         model = activity?.let { ViewModelProvider(it).get(MyViewModel::class.java) }!!
-        //catList = model.data.value!!
 
     }
 
@@ -50,8 +45,6 @@ class FirstFragment : Fragment() {
 
         rv_cats.adapter = adapter
         //----------------------------------------------------------
-        println("Gatos")
-        println("Gatos ${model.data.value}")
         // If exist any change on Recycler View's data, then update the view
         model.data.observe(viewLifecycleOwner, Observer {
             adapter.updateCatList(it)

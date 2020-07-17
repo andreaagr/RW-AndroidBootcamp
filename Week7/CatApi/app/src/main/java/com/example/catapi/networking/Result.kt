@@ -1,6 +1,4 @@
-package com.example.catapi.model
-
-import android.util.Log
+package com.example.catapi.networking
 
 sealed class Result<out T : Any>
 
