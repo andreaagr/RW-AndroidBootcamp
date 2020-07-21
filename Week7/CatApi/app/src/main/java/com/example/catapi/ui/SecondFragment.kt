@@ -100,6 +100,7 @@ class SecondFragment : Fragment() {
 
                 }
             }){
+                loadingDialog?.dismissDialog()
                 Toast.makeText(activity,"Some functions would be no available without internet connection :(", Toast.LENGTH_SHORT).show()
                 val breedAdapter = activity?.let {
                     ArrayAdapter(
