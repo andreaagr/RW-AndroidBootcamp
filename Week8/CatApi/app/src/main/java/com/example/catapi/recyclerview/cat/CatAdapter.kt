@@ -1,4 +1,4 @@
-package com.example.catapi.recyclerview
+package com.example.catapi.recyclerview.cat
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

@@ -9,12 +9,14 @@ import kotlinx.coroutines.launch
 class MyViewModel : ViewModel() {
     private val repository = Injection.providedCatRepository()
     var data : LiveData<List<Cat>>? = null
+    var funnyCatList : LiveData<List<FunnyCat>>? = null
 
 
    init {
         // ------------Initialize the list when the application loads
         viewModelScope.launch(Dispatchers.IO) {
             data = repository.getCats()
+            funnyCatList = repository.getFunnyCats()
         }
    }
 

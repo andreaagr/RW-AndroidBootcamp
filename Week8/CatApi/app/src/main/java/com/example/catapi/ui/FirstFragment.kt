@@ -10,19 +10,17 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.catapi.R
 import com.example.catapi.model.Cat
 import com.example.catapi.model.MyViewModel
-import com.example.catapi.recyclerview.CatAdapter
+import com.example.catapi.recyclerview.cat.CatAdapter
 import kotlinx.android.synthetic.main.fragment_first.*
 
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
 class FirstFragment : Fragment() {
 
     private val model by lazy {
         activity?.let { ViewModelProvider(it).get(MyViewModel::class.java) }!!
     }
 
-    private val adapter = CatAdapter(mutableListOf())
+    private val adapter =
+        CatAdapter(mutableListOf())
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -62,10 +60,9 @@ class FirstFragment : Fragment() {
         // Handle item selection
         return when (item.itemId) {
             R.id.action_show_more-> {
-                //findNavController().navigate(R.id.action_FirstFragment_to_funnyCatsFragment2)
+                findNavController().navigate(R.id.action_FirstFragment_to_funnyCatsFragment)
                 true
             }
-
             else -> super.onOptionsItemSelected(item)
         }
     }

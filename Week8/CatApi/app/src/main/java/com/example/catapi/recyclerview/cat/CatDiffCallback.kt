@@ -1,4 +1,4 @@
-package com.example.catapi.recyclerview
+package com.example.catapi.recyclerview.cat
 
 import androidx.recyclerview.widget.DiffUtil
 import com.example.catapi.model.Cat
