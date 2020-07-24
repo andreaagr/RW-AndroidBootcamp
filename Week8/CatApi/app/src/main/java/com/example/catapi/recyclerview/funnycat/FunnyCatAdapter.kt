@@ -8,7 +8,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.catapi.R
 import com.example.catapi.model.FunnyCat
 
-class FunnyCatAdapter(private var funnyCatList : MutableList<FunnyCat>) : RecyclerView.Adapter<FunnyCatViewHolder>() {
+class FunnyCatAdapter(private var funnyCatList : List<FunnyCat>) : RecyclerView.Adapter<FunnyCatViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FunnyCatViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.funny_cat_item,parent,false)
         return FunnyCatViewHolder(view)
@@ -25,7 +25,7 @@ class FunnyCatAdapter(private var funnyCatList : MutableList<FunnyCat>) : Recycl
                 .into(holder.picture)
     }
 
-    fun updateList(newList : MutableList<FunnyCat>){
+    fun updateList(newList : List<FunnyCat>){
         funnyCatList = newList
         notifyDataSetChanged()
     }

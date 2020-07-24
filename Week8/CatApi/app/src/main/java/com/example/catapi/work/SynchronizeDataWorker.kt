@@ -49,7 +49,7 @@ class SynchronizeDataWorker(context: Context, workerParameters: WorkerParameters
         return try {
             generateRandomImages()
             Log.e("Work", "Doing work")
-            createNotification("Sincronizando","Nuevos gatos disponibles!")
+            createNotification()
             Result.success(workDataOf(STATUS_WORK to true))
         }catch (error : Throwable){
             Result.failure()
@@ -73,7 +73,7 @@ class SynchronizeDataWorker(context: Context, workerParameters: WorkerParameters
         }
     }
 
-    private fun createNotification(title: String, description: String) {
+    private fun createNotification() {
 
         val notificationManager =
             applicationContext.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
@@ -85,8 +85,8 @@ class SynchronizeDataWorker(context: Context, workerParameters: WorkerParameters
         }
 
         val notificationBuilder = NotificationCompat.Builder(applicationContext, "101")
-            .setContentTitle(title)
-            .setContentText(description)
+            .setContentTitle("Synchronizing")
+            .setContentText("New cats available!")
             .setSmallIcon(R.drawable.ic_menu_gallery)
 
         notificationManager.notify(1, notificationBuilder.build())

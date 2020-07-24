@@ -25,7 +25,7 @@ class FunnyCatsFragment : Fragment() {
     }
 
     private val adapter by lazy{
-        FunnyCatAdapter(mutableListOf())
+        FunnyCatAdapter(listOf())
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,7 +39,7 @@ class FunnyCatsFragment : Fragment() {
     ): View? {
 
         model.funnyCatList?.observe(viewLifecycleOwner, Observer {
-            adapter.updateList(model.funnyCatList!!.value as MutableList<FunnyCat>)
+            model.funnyCatList!!.value?.let { it1 -> adapter.updateList(it1) }
         })
 
         // Inflate the layout for this fragment
@@ -70,8 +70,5 @@ class FunnyCatsFragment : Fragment() {
 
         val workManager = activity?.baseContext?.let { WorkManager.getInstance(it) }
         workManager?.enqueueUniquePeriodicWork("sync", ExistingPeriodicWorkPolicy.KEEP,work)
-
     }
-
-
 }
