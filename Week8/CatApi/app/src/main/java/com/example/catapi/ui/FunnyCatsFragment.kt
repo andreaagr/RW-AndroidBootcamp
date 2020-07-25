@@ -64,7 +64,7 @@ class FunnyCatsFragment : Fragment() {
             .setRequiredNetworkType(NetworkType.NOT_ROAMING)
             .build()
 
-        val work = PeriodicWorkRequestBuilder<SynchronizeDataWorker>(15, TimeUnit.MINUTES)
+        val work = PeriodicWorkRequestBuilder<SynchronizeDataWorker>(1, TimeUnit.HOURS)
             .setConstraints(constraints)
             .build()
 
