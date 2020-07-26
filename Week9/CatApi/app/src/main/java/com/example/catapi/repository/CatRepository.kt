@@ -1,6 +1,9 @@
-package com.example.catapi.model
+package com.example.catapi.repository
 
 import androidx.lifecycle.LiveData
+import com.example.catapi.model.Breed
+import com.example.catapi.model.Cat
+import com.example.catapi.model.FunnyCat
 
 interface CatRepository {
     suspend fun addCat(cat: Cat)

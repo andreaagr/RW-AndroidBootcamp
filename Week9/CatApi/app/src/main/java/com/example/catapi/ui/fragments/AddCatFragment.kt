@@ -17,9 +17,9 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.catapi.R
 import com.example.catapi.model.Cat
-import com.example.catapi.model.MyViewModel
 import com.example.catapi.networking.NetworkStatusChecker
 import com.example.catapi.ui.LoadingDialog
+import com.example.catapi.viewmodel.AddCatViewModel
 import kotlinx.android.synthetic.main.fragment_second.*
 
 @RequiresApi(Build.VERSION_CODES.M)
@@ -31,9 +31,9 @@ class AddCatFragment : Fragment() {
     private val loadingDialog by lazy { activity?.let { LoadingDialog(it) }}
 
     private val model by lazy {
-        activity?.let { ViewModelProvider(it).get(MyViewModel::class.java) }!!
+        activity?.let { ViewModelProvider(it).get(AddCatViewModel::class.java) }!!
     }
-
+    
     private val networkStatusChecker by lazy {
         NetworkStatusChecker(activity?.getSystemService(ConnectivityManager::class.java))
     }
@@ -150,7 +150,6 @@ class AddCatFragment : Fragment() {
             })
             Toast.makeText(activity,"You don't have internet connection! :(", Toast.LENGTH_SHORT).show()
     }
-
 
 }
 

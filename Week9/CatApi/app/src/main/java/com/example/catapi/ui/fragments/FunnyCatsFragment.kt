@@ -11,8 +11,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.work.*
 import com.example.catapi.R
-import com.example.catapi.model.MyViewModel
 import com.example.catapi.recyclerview.funnycat.FunnyCatAdapter
+import com.example.catapi.viewmodel.FunnyCatsViewModel
 import kotlinx.android.synthetic.main.fragment_funny_cats.*
 import java.util.concurrent.TimeUnit
 
@@ -20,7 +20,7 @@ import java.util.concurrent.TimeUnit
 class FunnyCatsFragment : Fragment() {
 
     private val model by lazy {
-        activity?.let { ViewModelProvider(it).get(MyViewModel::class.java) }!!
+        activity?.let { ViewModelProvider(it).get(FunnyCatsViewModel::class.java) }!!
     }
 
     private val adapter by lazy{
@@ -37,8 +37,8 @@ class FunnyCatsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        model.funnyCatList?.observe(viewLifecycleOwner, Observer {
-            model.funnyCatList!!.value?.let { it1 -> adapter.updateList(it1) }
+        model.getFunnyCats()?.observe(viewLifecycleOwner, Observer {
+            model.getFunnyCats()!!.value?.let { it1 -> adapter.updateList(it1) }
         })
 
         // Inflate the layout for this fragment
@@ -57,7 +57,6 @@ class FunnyCatsFragment : Fragment() {
     }
 
     private fun synchronizeApi(){
-
         val constraints = Constraints.Builder()
             .setRequiresBatteryNotLow(true)
             .setRequiredNetworkType(NetworkType.NOT_ROAMING)

@@ -10,7 +10,7 @@ import androidx.work.Worker
 import androidx.work.WorkerParameters
 import androidx.work.workDataOf
 import com.example.catapi.model.FunnyCat
-import com.example.catapi.model.Injection
+import com.example.catapi.repository.Injection
 import com.example.catapi.networking.Failure
 import com.example.catapi.networking.RemoteApi
 import com.example.catapi.networking.Success

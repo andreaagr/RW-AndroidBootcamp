@@ -9,14 +9,14 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.catapi.R
 import com.example.catapi.model.Cat
-import com.example.catapi.model.MyViewModel
 import com.example.catapi.recyclerview.cat.CatAdapter
+import com.example.catapi.viewmodel.ShowCatsViewModel
 import kotlinx.android.synthetic.main.fragment_first.*
 
-class ShowCatstFragment : Fragment() {
+class ShowCatsFragment : Fragment() {
 
     private val model by lazy {
-        activity?.let { ViewModelProvider(it).get(MyViewModel::class.java) }!!
+        activity?.let { ViewModelProvider(it).get(ShowCatsViewModel::class.java) }!!
     }
 
     private val adapter =
@@ -27,7 +27,7 @@ class ShowCatstFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
         // If exist any change on Recycler View's data, then update the view
-        model.data?.observe(viewLifecycleOwner, Observer {
+        model.getCats()?.observe(viewLifecycleOwner, Observer {
             adapter.updateCatList(it as MutableList<Cat>)
         })
         // Let you inflate a options menu. If you delete the line, the menu isn't show
@@ -42,7 +42,6 @@ class ShowCatstFragment : Fragment() {
         //---------------------------------Setting the Recycler View
         val numberOfColumns = 2
         rv_cats.layoutManager = GridLayoutManager(activity, numberOfColumns)
-
         rv_cats.adapter = adapter
         //----------------------------------------------------------
 

@@ -5,12 +5,11 @@ import com.example.catapi.App
 import com.example.catapi.model.Breed
 import com.example.catapi.ui.main.MainActivity
 import com.example.catapi.model.Cat
-import com.example.catapi.model.CatRepository
 import com.example.catapi.model.FunnyCat
 import com.example.catapi.networking.Success
 
 
-class AppRepository : CatRepository{
+class AppRepository : CatRepository {
     private val catDao = MainActivity.catDatabase.catDao()
 
     override suspend fun addCat(cat: Cat) {
