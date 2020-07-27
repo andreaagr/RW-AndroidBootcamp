@@ -16,6 +16,7 @@ import androidx.navigation.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.catapi.R
+import com.example.catapi.viewmodel.UIResponseState
 import com.example.catapi.model.Cat
 import com.example.catapi.networking.NetworkStatusChecker
 import com.example.catapi.ui.LoadingDialog
@@ -33,7 +34,7 @@ class AddCatFragment : Fragment() {
     private val model by lazy {
         activity?.let { ViewModelProvider(it).get(AddCatViewModel::class.java) }!!
     }
-    
+
     private val networkStatusChecker by lazy {
         NetworkStatusChecker(activity?.getSystemService(ConnectivityManager::class.java))
     }
@@ -42,7 +43,7 @@ class AddCatFragment : Fragment() {
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        setupObservers()
+        setupObserver()
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_second, container, false)
     }
@@ -61,8 +62,8 @@ class AddCatFragment : Fragment() {
 
         //------------------------------------------------------------------------------------ Button for add a new cat
         bt_new_cat.setOnClickListener {
-            if (!emptyName()){
-                val cat = Cat(et_cat_name.text.toString(),sp_breed.selectedItem.toString(),sp_genre.selectedItem.toString(),image)
+            val cat = Cat(et_cat_name.text.toString(),sp_breed.selectedItem.toString(),sp_genre.selectedItem.toString(),image)
+            if (!model.emptyName(cat)){
                 // Add changes in the database
                 model.addCat(cat)
                 // Show a message
@@ -74,41 +75,47 @@ class AddCatFragment : Fragment() {
         //-------------------------------------------------------------------------------------------------------------
     }
 
-    private fun emptyName() : Boolean{
-        return et_cat_name.text.isEmpty()
-    }
+    private fun setupObserver(){
 
+        model.viewState.observe(viewLifecycleOwner, Observer {uiState ->
+            when(uiState){
+                is UIResponseState.Loading -> loadingDialog?.startDialog()
 
-    private fun setupObservers(){
-        model.getCat().observe(viewLifecycleOwner, Observer {
-            image = model.getCat().value?.url ?: ""
-
-            if(image != "")
-                activity?.let { it1 ->
-                    Glide.with(it1).load(image)
-                        .centerCrop()
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-                        .into(iv_cat_random)
+                is UIResponseState.Error -> {
+                    Toast.makeText(activity,"Failed to load resources :(",Toast.LENGTH_SHORT).show()
                 }
-            else
-                Toast.makeText(activity,"Failed to load resource :(",Toast.LENGTH_SHORT).show()
-        })
 
+                is UIResponseState.Success<*> -> {
+                    if (uiState.content is Cat){
+                        image = uiState.content.url
 
-        model.getBreedMap().observe(viewLifecycleOwner, Observer {
-            breedMap = model.getBreedMap().value!!
-            //-----------------------------------------------Display the breeds available in the spinner
-            val breedAdapter = activity?.let {
-                ArrayAdapter(
-                    it,
-                    android.R.layout.simple_spinner_dropdown_item,
-                    breedMap.keys.toTypedArray()
-                )
+                        if(image != "")
+                            activity?.let { it1 ->
+                                Glide.with(it1).load(image)
+                                    .centerCrop()
+                                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                                    .into(iv_cat_random) }
+
+                        loadingDialog?.dismissDialog()
+
+                    }else if(uiState.content is Map<*,*>){
+                        breedMap = uiState.content as Map<String, String>
+                        val breedAdapter = activity?.let {
+                            ArrayAdapter(
+                                it,
+                                android.R.layout.simple_spinner_dropdown_item,
+                                breedMap.keys.toTypedArray()
+                            )
+                        }
+                        breedAdapter?.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                        sp_breed.adapter = breedAdapter
+                        loadingDialog?.dismissDialog()
+                    }
+                }
+                else ->{
+                    println("Waiting for new actions")
+                }
             }
-            breedAdapter?.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            sp_breed.adapter = breedAdapter
-            loadingDialog?.dismissDialog()
-            //------------------------------------------------------------------------------------------
         })
     }
 
@@ -126,7 +133,6 @@ class AddCatFragment : Fragment() {
     }
 
     private fun populateBreedMap(){
-        loadingDialog?.startDialog()
         if(!networkStatusChecker.performIfConnectedToInternet {
                 model.obtainBreedList()
             }) {

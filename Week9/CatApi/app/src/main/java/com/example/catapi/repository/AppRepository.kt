@@ -10,7 +10,7 @@ import com.example.catapi.networking.Success
 
 
 class AppRepository : CatRepository {
-    private val catDao = MainActivity.catDatabase.catDao()
+    private val catDao = MainActivity.catDatabase!!.catDao()
 
     override suspend fun addCat(cat: Cat) {
         catDao.insertCat(cat)
@@ -45,11 +45,6 @@ class AppRepository : CatRepository {
         return null
     }
 
-    /*
-    override suspend fun getBreedList(): LiveData<List<Breed>> {
-        val result = App.remoteApiBreed.getBreedList()
-        if (result is Success) {
-            return result.data.map { it.name to it.id }.toMap()
-        return null
-    }*/
 }
+
+

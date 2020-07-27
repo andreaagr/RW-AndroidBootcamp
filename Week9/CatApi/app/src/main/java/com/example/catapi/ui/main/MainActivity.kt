@@ -12,7 +12,8 @@ import com.example.catapi.viewmodel.ShowCatsViewModel
 class MainActivity : AppCompatActivity() {
 
     companion object{
-        lateinit var catDatabase: CatDatabase
+
+        var catDatabase: CatDatabase? = null
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
