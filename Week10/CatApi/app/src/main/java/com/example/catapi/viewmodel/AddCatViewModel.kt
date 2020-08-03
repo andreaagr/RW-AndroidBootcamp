@@ -22,14 +22,14 @@ class AddCatViewModel : ViewModel(),KoinComponent {
     fun addCat(cat: Cat) {
         // Adding the element into database
         _viewState.value = UIResponseState.Waiting
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch{
             repository.addCat(cat)
         }
     }
 
     fun searchCat(breedId: String) {
         _viewState.value = UIResponseState.Loading
-        viewModelScope.launch {
+        viewModelScope.launch{
             val cat = repository.searchCat(breedId)
             cat?.let {
                 _viewState.postValue(UIResponseState.Success(cat))
@@ -39,7 +39,7 @@ class AddCatViewModel : ViewModel(),KoinComponent {
 
     fun obtainBreedList() {
         _viewState.value = UIResponseState.Loading
-        viewModelScope.launch {
+        viewModelScope.launch{
             val breedMap = repository.getBreedList()
             breedMap?.let {
                 _viewState.postValue(UIResponseState.Success(breedMap.map { it.name to it.id }.toMap()))

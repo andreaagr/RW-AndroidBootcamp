@@ -7,6 +7,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
+private const val BASE_URL = "https://api.thecatapi.com"
 private const val HEADER_AUTHORIZATION = "x-api-key"
 private const val TOKEN_KEY = ""
 

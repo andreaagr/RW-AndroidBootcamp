@@ -2,14 +2,12 @@ package com.example.catapi.networking
 
 import com.example.catapi.model.*
 
-const val BASE_URL = "https://api.thecatapi.com"
 class RemoteApi (private val apiService: RemoteApiService){
 
     suspend fun getBreedList() : Result<List<Breed>> = try {
         val data = apiService.obtainBreedList()
         Success(data)
     }catch (error : Throwable){
-        println("Error: ${error.toString()}")
         Failure(error)
     }
 
@@ -17,7 +15,6 @@ class RemoteApi (private val apiService: RemoteApiService){
         val data = apiService.obtainCatPhoto(breedId)
         Success(data)
     }catch (error : Throwable){
-        println("Error: ${error.toString()}")
         Failure(error)
     }
 
