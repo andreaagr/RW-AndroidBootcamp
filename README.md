@@ -15,9 +15,9 @@ raywenderlich.com is a community site focused on creating high quality programmi
 - **Week 6 (Jun 29)**: Threading, Concurrency, Thread Switching, Main Thread, Coroutines (basics)
 - **Week 7 (Jul 6)**: Networking, Network status/info, HTTP, REST, JSON, Retrofit
 - **Week 8 (Jul 13)**: WorkManager, DownloadManager, Services, AsyncTask, JobScheduler, AlarmManager
-- **Week 9 (Jul 20)**: Coroutines (in depth), Testing with Mockito, Jetpack (some components)
-- **Week 10 (Jul 27)**: MVVM, Unit Tests, Data Binding
-- **Week 11 (Aug 3)**: Dependency Injection, Koin, Dependency Management
+- **Week 9 (Jul 20)**: MVVM, Unit Tests, Data Binding
+- **Week 10 (Jul 27)**: Dependency Injection, Koin, Dependency Management
+- **Week 11 (Aug 3)**: Animations
 - **Week 12 (Aug 10)**: Capstone project!
 - **Week 13 (Aug 17)**: Graduation week
 
