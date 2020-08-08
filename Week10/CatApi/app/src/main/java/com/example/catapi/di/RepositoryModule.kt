@@ -4,5 +4,5 @@ import com.example.catapi.repository.AppRepository
 import org.koin.dsl.module
 
 val repositoryModule = module {
-    single { AppRepository() }
+    single { AppRepository(get(), get()) }
 }

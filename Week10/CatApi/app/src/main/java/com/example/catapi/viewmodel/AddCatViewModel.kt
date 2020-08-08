@@ -11,8 +11,7 @@ import kotlinx.coroutines.launch
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 
-class AddCatViewModel : ViewModel(),KoinComponent {
-    private val repository : AppRepository by inject()
+class AddCatViewModel(private val repository: AppRepository) : ViewModel(),KoinComponent {
     private val _viewState = MutableLiveData<UIResponseState>().apply {
         value = UIResponseState.Waiting
     }

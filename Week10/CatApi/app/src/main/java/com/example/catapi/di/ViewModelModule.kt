@@ -8,14 +8,14 @@ import org.koin.dsl.module
 
 val viewModelModule = module {
     viewModel {
-        AddCatViewModel()
+        AddCatViewModel(get())
     }
 
     viewModel {
-        FunnyCatsViewModel()
+        FunnyCatsViewModel(get())
     }
 
     viewModel {
-        ShowCatsViewModel()
+        ShowCatsViewModel(get())
     }
 }

@@ -5,13 +5,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.catapi.model.FunnyCat
 import com.example.catapi.repository.AppRepository
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import org.koin.core.KoinComponent
-import org.koin.core.inject
 
-class FunnyCatsViewModel : ViewModel(),KoinComponent {
-    private val repository : AppRepository by inject()
+class FunnyCatsViewModel(private val repository: AppRepository) : ViewModel(){
     private var funnyCatList : LiveData<List<FunnyCat>>? = null
 
     init {

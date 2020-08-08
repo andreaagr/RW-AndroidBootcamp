@@ -6,15 +6,11 @@ import com.example.catapi.model.Cat
 import com.example.catapi.model.FunnyCat
 import com.example.catapi.networking.RemoteApi
 import com.example.catapi.networking.Success
-import com.example.catapi.ui.main.MainActivity
+import com.example.catapi.room.CatDao
 import org.koin.core.KoinComponent
-import org.koin.core.inject
 
 
-class AppRepository : CatRepository,KoinComponent {
-    private val catDao = MainActivity.catDatabase!!.catDao()
-    private val remoteApi : RemoteApi by inject()
-
+class AppRepository(private val remoteApi: RemoteApi, private val catDao: CatDao) : CatRepository,KoinComponent {
     override suspend fun addCat(cat: Cat) {
         catDao.insertCat(cat)
     }

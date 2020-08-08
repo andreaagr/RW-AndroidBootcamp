@@ -5,13 +5,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.catapi.model.Cat
 import com.example.catapi.repository.AppRepository
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.koin.core.KoinComponent
-import org.koin.core.inject
 
-class ShowCatsViewModel : ViewModel(), KoinComponent{
-    private val repository : AppRepository by inject()
+class ShowCatsViewModel(private val repository: AppRepository) : ViewModel(), KoinComponent{
     private var cats : LiveData<List<Cat>>? = null
 
     init {
