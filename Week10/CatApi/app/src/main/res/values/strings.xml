@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">CatApi</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="new_image">Tap the cat to generate a new picture</string>
+    <string name="cat_name">Name</string>
+    <string name="choose_breed">Choose a breed</string>
+    <string name="description_cat">This image view shall contain a picture of a cat</string>
+    <string name="button_add">Add new cat</string>
+    <string name="choose_sex">Choose the genre</string>
+    <string name="label_name">Cat Name</string>
+    <string name="label_breed">Breed</string>
+    <string name="label_genre">Genre</string>
+    <string name="loading_message">Loading...</string>
+    <string name="show_more">Show More</string>
+</resources>
