@@ -45,6 +45,11 @@ class AddCatFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if(!networkStatusChecker.hasInternetConnection()){
+            iv_cat_random.visibility = View.GONE
+            lottie_img.visibility = View.VISIBLE
+            textView.visibility = View.GONE
+        }
 
         setupGenreAdapter()
         populateBreedMap()
